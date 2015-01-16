@@ -53,8 +53,12 @@ int main(){
 	usiTwiSlaveInit();
 	sei();
 
-	for(uint8_t i = 0; i < sizeof(map); i++){
-		vals[i] = readADC(map[i]);
+	while(true) {
+
+		for(uint8_t i = 0; i < sizeof(map); i++){
+			vals[i] = readADC(map[i]);
+		}
+		
 	}
 
 
