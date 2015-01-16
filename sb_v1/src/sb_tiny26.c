@@ -31,11 +31,26 @@ static uint16_t vals[ADCN];
 
 static uint8_t cbread(uint8_t len){
 
+	//VERSION
 	if(len == 1 && usiTwiRxBuf[0] == 1){
 		usiTwiTxBuf[0] = 1;
 		usiTwiTxBuf[1] = ADCN;
 		return 2;
 	}
+	//FLOODON
+	if(len == 1 && usiTwiRxBuf[0] == 3) {
+
+		PORTA |= 0x01;
+		return 0;		
+
+	}
+	if(len == 1 && usiTwiRxBuf[0] == 4) {
+
+		PORTA &= 0xFE
+		return 0;
+
+	}
+
 	return 0;
 }
 
